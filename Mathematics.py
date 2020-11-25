@@ -53,3 +53,8 @@ def display_answers():
         return render_template('disp_add_within_100.html', answers_to_display=session['answers'], questions_to_display=session['questions'], cols=cols, marks=session['marks'])
     else:
         return render_template('disp_add_within_100.html', answers_to_display=session['answers'], questions_to_display=session['questions'])
+
+
+if __name__ == '__main__':
+    app.run()
+
