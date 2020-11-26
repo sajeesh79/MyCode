@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form  action="/calculate_answers" method="post">
+{% set ns = namespace(found=false) %}
+{% set ns.count = 0 %}
+    <table border="1" style="color:blue;font-size:20px;" width="100%">
+      <!-- table rows -->
+        {% for keys in nums_to_add if nums_to_add|length >= ns.count %}
+            <tr align="center">
+                {% for i in range(0,cols) if ns.count < nums_to_add|length %}
+                    <td align="center">
+                            <table style="color:blue;font-size:20px;" width="100%">
+                                <tr>
+                                    <td align="right" colspan="2">{{ nums_to_add[ns.count][0] }} </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">+ &nbsp;&nbsp;&nbsp;{{ nums_to_add[ns.count][1] }} <br> ---------------- <br></td>
+                                </tr>
+                                <tr>
+                                    <td align="right"><input name = "text{{ ns.count }}" maxlength="{{ max_len }}" size="{{ max_len }}" type="text"></td>
+                                </tr>
+                            </table>
+                    </td>
+                    {% set ns.count = ns.count + 1 %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    <tr><td colspan="16" align="center"><div class="buttonRight"><button style="align" type="submit">Check Answers</button></div></td></tr>
+    </table>
+</form>
+</body>
+</html>
+

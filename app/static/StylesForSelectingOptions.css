@@ -1,0 +1,24 @@
+body {
+    font-family: sans-serif;
+    color: red;
+    background-color: floralwhite;
+}
+.buttonRight {
+    text-align: right
+}
+.buttonLeft {
+    text-align: left
+}
+.buttonCenter {
+    text-align: right
+}
+.inputLabel {
+    color: blue;
+    text-align: left
+}
+h1 {
+    text-align: center;
+}
+table {
+    table-layout : fixed;
+}

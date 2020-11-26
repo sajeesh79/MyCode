@@ -2,14 +2,26 @@
 {% block Title %}Welcome{% endblock %}
 
 {% block body %}
-<h1>Generate Reports</h1>
+<form action="/addition" method="post">
+<h1>Addition of 2 numbers</h1>
     <table align="center" width="100%">
         <tbody>
             <tr>
-                <td/>
-                <td><div class="input"><a href="/addition">Cluster Configs Report</a></div></td>
-                <td/>
+                <td align="right">Max Limit of 1st number</td>
+                <td align="left"><input name = "limit_max1" type="text"></td>
+            </tr>
+            <tr>
+                <td align="right">Max Limit of 2nd number</td>
+                <td align="left"><input name = "limit_max2" type="text"></td>
+            </tr>
+            <tr>
+                <td align="right">Number of Questions</td>
+                <td align="left"><input name = "questions" type="text"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><div class="buttonCenter"><button style="align" type="submit">Submit</button></div></td></tr>
             </tr>
         </tbody>
     </table>
+</form>
 {% endblock %}

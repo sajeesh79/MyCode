@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+{% set ns = namespace(found=false) %}
+{% set ns.count = 0 %}
+    <table border="1" style="color:blue;font-size:20px;" width="100%">
+      <!-- table rows -->
+        {% for keys in questions_to_display if questions_to_display|length > ns.count %}
+            <tr>
+                {% for i in range(0,cols) if ns.count < answers_to_display|length %}
+                <td>
+                            <table style="color:blue;font-size:20px;" width="100%">
+                                <tr>
+                                    <td align="right" colspan="2">{{ questions_to_display[ns.count|string][0] }} </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">+ &nbsp;{{ questions_to_display[ns.count|string][1] }} <br> ---------------- <br></td>
+                                </tr>
+                                <tr>
+                                    <td>Answer: {{ questions_to_display[ns.count|string][2] }} <br> Your Answer: {{ answers_to_display[ns.count|string]}}</td>
+                                </tr>
+                            </table>
+                    {% set ns.count = ns.count + 1 %}
+                {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    <tr><td colspan="16" align="center"><div class="buttonLeft"><button type=button onclick="window.location.href='{{ (url_for('display_questions')) }}';">Reset</button></div></td></tr>
+    <tr><td colspan="16" align="center">MARKS :  {{ marks }}</td></tr>
+    </table>
+</form>
+</body>
+</html>
+
