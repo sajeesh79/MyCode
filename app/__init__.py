@@ -20,10 +20,10 @@ def welcome():
 # ----------------
 # Addition
 # ----------------
-@app.route("/addition", defaults={"max_n": 50, "no_of_q": 16}, methods=['GET', 'POST'])
+@app.route("/addition", defaults={"max_n": 10, "no_of_q": 8}, methods=['GET', 'POST'])
 @app.route("/addition/<int:max_n>/<int:no_of_q>", methods=['GET', 'POST'])
 @app.route("/addition/<int:max_n>/<int:max_2>/<int:no_of_q>", methods=['GET', 'POST'])
-def cal_addition_within_100(max_n, no_of_q=16, max_2=9):
+def cal_addition_within_100(max_n, no_of_q=16, max_2=None):
     if request.method == 'POST':
         answers_add_within_100 = {}
         marks = 0
@@ -45,7 +45,7 @@ def cal_addition_within_100(max_n, no_of_q=16, max_2=9):
             if max_2:
                 num1_to_add = gen_random_for_first(min_n, session['max_limit'])
                 num2_to_add = gen_random_for_second(min_n, session['max_limit_2'])
-                nums_to_add = [num1_to_add, num2_to_add, num1_to_add + num2_to_add]
+                nums_to_add = [num1_to_add, num2_to_add, int(num1_to_add) + int(num2_to_add)]
             else:
                 nums_to_add = gen_random(min_n, session['max_limit'])
             dict_of_nums_to_add[i] = nums_to_add
