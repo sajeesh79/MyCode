@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
 from flask import session
 from Addition_within_100 import gen_random
-from __init__ import app
+from app import app
 
 # app = Flask(__name__)
 
