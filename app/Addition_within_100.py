@@ -11,3 +11,18 @@ def gen_random(min_n, max_n):
     return [n1, n2, sum_n1_n2]
 
 
+def gen_random_for_first(min_n, max_n):
+    min_number = min_n
+    max_number = max_n
+    num = str(random.randint(min_number, max_number))
+    n = (len(str(max_number)) - len(num)) * '0' + num
+    return n
+
+
+def gen_random_for_second(min_n, max_n):
+    min_number = min_n
+    max_number = max_n
+    num = str(random.randint(min_number, max_number))
+    n = (len(str(max_number)) - len(num)) * '0' + num
+    return n
+

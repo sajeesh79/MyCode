@@ -1,13 +1,13 @@
 from flask import render_template, request, redirect, url_for
 from flask import session
-from app.Addition_within_100 import gen_random
+from app.Addition_within_100 import gen_random, gen_random_for_first, gen_random_for_second
 
 from flask import Flask
 app = Flask(__name__)
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
-no_of_q = 24
+
 cols = 8
 min_n = 1
 # max_n = 5000
@@ -22,7 +22,8 @@ def welcome():
 # ----------------
 @app.route("/addition", defaults={"max_n": 50, "no_of_q": 16}, methods=['GET', 'POST'])
 @app.route("/addition/<int:max_n>/<int:no_of_q>", methods=['GET', 'POST'])
-def cal_addition_within_100(max_n, no_of_q):
+@app.route("/addition/<int:max_n>/<int:max_2>/<int:no_of_q>", methods=['GET', 'POST'])
+def cal_addition_within_100(max_n, no_of_q=16, max_2=9):
     if request.method == 'POST':
         answers_add_within_100 = {}
         marks = 0
@@ -38,9 +39,15 @@ def cal_addition_within_100(max_n, no_of_q):
         session['answers'] = {}
         session['max_limit'] = max_n
         session['no_of_q'] = no_of_q
+        session['max_limit_2'] = max_2
         dict_of_nums_to_add = {}
         for i in range(0, session['no_of_q']):
-            nums_to_add = gen_random(min_n, session['max_limit'])
+            if max_2:
+                num1_to_add = gen_random_for_first(min_n, session['max_limit'])
+                num2_to_add = gen_random_for_second(min_n, session['max_limit_2'])
+                nums_to_add = [num1_to_add, num2_to_add, num1_to_add + num2_to_add]
+            else:
+                nums_to_add = gen_random(min_n, session['max_limit'])
             dict_of_nums_to_add[i] = nums_to_add
         # print(dict_of_nums_to_add)
         session['questions'] = dict_of_nums_to_add
