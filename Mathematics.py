@@ -1,9 +1,8 @@
 from flask import render_template, request, redirect, url_for
 from flask import session
 from Addition_within_100 import gen_random
-from flask import Flask
+from __init__ import app
 
-app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 no_of_q = 24
