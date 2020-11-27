@@ -25,8 +25,8 @@ def welcome():
 def display_questions():
     if request.method == 'POST':
         session['max_n'] = int(request.form['limit_max1'])
-        # session['no_of_q'] = int(request.form['questions'])
-        session['no_of_q'] = no_of_q
+        session['no_of_q'] = int(request.form['questions'])
+        # session['no_of_q'] = no_of_q
         dict_of_nums_to_add = {}
         for i in range(0, session['no_of_q']):
             if request.form['limit_max2'] != "":
