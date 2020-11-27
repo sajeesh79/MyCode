@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for
 from flask import session
-from app.Addition import gen_random, gen_random_for_first, gen_random_for_second
+from Addition import gen_random, gen_random_for_first, gen_random_for_second
 
 from flask import Flask
 app = Flask(__name__)
