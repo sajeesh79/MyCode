@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for
 from flask import session
-from Addition import gen_random, gen_random_for_first, gen_random_for_second
+from app.Addition import gen_random, gen_random_for_first, gen_random_for_second
 
 from flask import Flask
 app = Flask(__name__)
@@ -8,8 +8,9 @@ app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
-cols = 8
+cols = 5
 min_n = 1
+no_of_q = 20
 # max_n = 5000
 
 @app.route("/")
@@ -24,7 +25,8 @@ def welcome():
 def display_questions():
     if request.method == 'POST':
         session['max_n'] = int(request.form['limit_max1'])
-        session['no_of_q'] = int(request.form['questions'])
+        # session['no_of_q'] = int(request.form['questions'])
+        session['no_of_q'] = no_of_q
         dict_of_nums_to_add = {}
         for i in range(0, session['no_of_q']):
             if request.form['limit_max2'] != "":
